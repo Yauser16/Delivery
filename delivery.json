@@ -1,0 +1,123 @@
+{
+  "delivery": [
+    {
+      "id": "ac6e5664-e735-4ed4-bafe-12e2b9e8cc88",
+      "name": "ЗАО Техпром",
+      "contactName": "Петр",
+      "phone": "89455655456",
+      "address": "Москва, Сормовский проезд, 11с7",
+      "date": "18.03.2024",
+      "documents": "",
+      "description": "",
+      "sender": "Михаил Якунин"
+    },
+    {
+      "id": "443887d9-7535-4f76-a907-c9ced0b8a1ed",
+      "name": "ООО Рябинка",
+      "contactName": "Сергей Петров",
+      "phone": "89039089898",
+      "address": "Москва, Сормовский проезд, 11с7",
+      "date": "16.03.2024",
+      "documents": "",
+      "description": "",
+      "sender": "Михаил Якунин"
+    },
+    {
+      "id": "3b931ace-cd5f-46f8-8b9c-002a63b49c71",
+      "name": "ООО \"НПП КВАЛИТЕТ\"",
+      "contactName": "Сергей",
+      "phone": "89416554455",
+      "address": "Москва, Пушкарёв переулок, дом 17",
+      "date": "21.03.2024",
+      "documents": "",
+      "description": "",
+      "sender": "Михаил Якунин"
+    },
+    {
+      "id": "92bb06c3-c0fc-4b17-8ea9-7c234ac875e5",
+      "name": "ИП Петров",
+      "contactName": "Петр",
+      "phone": "89767677575",
+      "address": "Тамбов Монтажников 1",
+      "date": "20.03.2024",
+      "documents": "",
+      "description": "",
+      "sender": "Михаил Якунин, изменил: Михаил Якунин"
+    }
+  ],
+  "deliveriesprops": [
+    {
+      "id": "1",
+      "name": "name",
+      "label": "Получатель"
+    },
+    {
+      "id": "2",
+      "name": "contactName",
+      "label": "Контактное лицо получателя"
+    },
+    {
+      "id": "3",
+      "name": "phone",
+      "label": "Телефон контактного лица"
+    },
+    {
+      "id": "4",
+      "name": "address",
+      "label": "Адрес доставки"
+    },
+    {
+      "id": "6",
+      "name": "date",
+      "label": "Дата доставки"
+    },
+    {
+      "id": "7",
+      "name": "documents",
+      "label": "Документы"
+    },
+    {
+      "id": "8",
+      "name": "description",
+      "label": "Детали доставки"
+    },
+    {
+      "id": "9",
+      "name": "sender",
+      "label": "Оформил"
+    }
+  ],
+  "drivers": [
+    {
+      "name": "Симонов И. Ж.",
+      "id": "0335788c-444d-46b4-9c9f-71d787305865"
+    },
+    {
+      "name": "Воловченко Н. В.",
+      "id": "004315f1-4008-453b-b0e8-f16c5d03c092"
+    },
+    {
+      "name": "Борисов С. П.",
+      "id": "81c14184-8509-424e-a36a-6ae43e551df9"
+    }
+  ],
+  "distrdeliveries": [],
+  "auth": [
+    {
+      "name": "Андрей Волков",
+      "login": "andrei.volkov@relod.ru",
+      "password": "123456",
+      "role": "dispatcher",
+      "id": "589094fe-6dcf-4d43-85c4-3c16643fbdd3",
+      "admin": true
+    },
+    {
+      "name": "Михаил Якунин",
+      "login": "yauser@mail.ru",
+      "password": "123456",
+      "role": "manager",
+      "id": "10d691fd-8430-4145-a377-f9bb347ef989",
+      "admin": false
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+@media screen and (max-width: 800px) {
+    .largeScreen {
+        display: none;
+    }
+}
+
+.smallScreen {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    .smallScreen {
+        display: block;
+    }
+}
+
+.small {
+    display: none;
+}
+
+@media screen and (max-width: 450px) {
+    .small {
+        display: block;
+        margin-top: 5px;
+    }
+
+    .large {
+        display: none;
+    }
+}
