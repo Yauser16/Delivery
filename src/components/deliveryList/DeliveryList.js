@@ -63,8 +63,7 @@ const DeliveryList = (props) => {
         let result = filteredDeliveries ? filteredDeliveries.filter(item => item.id !== target) : null
         setFilteredDeliveries(result);
     }
-
-    console.log(message);
+        
     const deliveryRender = (arr) => {
         if (arr.length === 0) {
             return <h5 className="text-center mt-5">Доставок пока нет</h5>

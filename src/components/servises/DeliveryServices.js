@@ -29,6 +29,15 @@ const useDeliveryServices = () => {
             return <option key={item} value={item}>{item}</option>
         })
     }
+
+    const selectWeight = () => {
+        let i = 0;
+        for ( let e = 0; e < 20; e++) {
+            i = i+1;
+        return i;}
+        
+        return <option key={i} value={i}>{i}</option>
+    }
     const checkDate = item => {
         let dateRegex = /(\d\d).(\d\d).(\d\d\d\d)/;
         let itemDateArr = dateRegex.exec(item);
@@ -58,6 +67,7 @@ const useDeliveryServices = () => {
     return {
         today,
         selectData,
+        selectWeight,
         checkDate,
         exportCSV
     }

@@ -1,48 +1,60 @@
 {
   "delivery": [
     {
-      "id": "ac6e5664-e735-4ed4-bafe-12e2b9e8cc88",
-      "name": "ЗАО Техпром",
-      "contactName": "Петр",
-      "phone": "89455655456",
-      "address": "Москва, Сормовский проезд, 11с7",
-      "date": "18.03.2024",
-      "documents": "",
-      "description": "",
-      "sender": "Михаил Якунин"
-    },
-    {
-      "id": "443887d9-7535-4f76-a907-c9ced0b8a1ed",
-      "name": "ООО Рябинка",
-      "contactName": "Сергей Петров",
-      "phone": "89039089898",
-      "address": "Москва, Сормовский проезд, 11с7",
-      "date": "16.03.2024",
-      "documents": "",
-      "description": "",
-      "sender": "Михаил Якунин"
-    },
-    {
-      "id": "3b931ace-cd5f-46f8-8b9c-002a63b49c71",
+      "id": "7ac0c0f3-ab73-423f-b5d7-ad2ff9b768dd",
       "name": "ООО \"НПП КВАЛИТЕТ\"",
       "contactName": "Сергей",
       "phone": "89416554455",
       "address": "Москва, Пушкарёв переулок, дом 17",
-      "date": "21.03.2024",
+      "date": "27.03.2024",
+      "documents": "",
+      "description": "",
+      "sender": "Михаил Якунин, изменил: Михаил Якунин"
+    },
+    {
+      "id": "f2a7efc6-a237-4e56-8a20-6ddf23e3e545",
+      "name": "ЗАО РЕЛОД",
+      "contactName": "Петр",
+      "phone": "89166545654",
+      "address": "Москва, Шипиловская улица, 12",
+      "date": "15.03.2024",
       "documents": "",
       "description": "",
       "sender": "Михаил Якунин"
     },
     {
-      "id": "92bb06c3-c0fc-4b17-8ea9-7c234ac875e5",
-      "name": "ИП Петров",
-      "contactName": "Петр",
-      "phone": "89767677575",
-      "address": "Тамбов Монтажников 1",
+      "id": "8cd6bde4-33a4-4dcd-866b-15bba646da9a",
+      "name": "ООО Единение",
+      "contactName": "Сергей",
+      "phone": "87566455434",
+      "address": "Москва, Ленинский проспект, 101с2",
       "date": "20.03.2024",
       "documents": "",
       "description": "",
-      "sender": "Михаил Якунин, изменил: Михаил Якунин"
+      "sender": "Михаил Якунин"
+    },
+    {
+      "id": "5aadfeb4-8ffa-43c7-aa43-e7a41609aa2b",
+      "name": "ООО Росинвенст",
+      "contactName": "Николай Иванов",
+      "phone": "89166585858",
+      "address": "Московская область, Одинцовский городской округ, посёлок Николина Гора, 23",
+      "date": "24.03.2024",
+      "documents": "",
+      "description": "",
+      "sender": "Михаил Якунин"
+    },
+    {
+      "id": "f332e727-a208-4b48-83df-0770b49b2773",
+      "place": "tambov",
+      "operation": "inTo",
+      "name": "НЗМП",
+      "contactName": "л123лл77",
+      "phone": "89169879898",
+      "date": "24.03.2024",
+      "documents": "",
+      "description": "",
+      "sender": "Михаил Якунин"
     }
   ],
   "deliveriesprops": [
@@ -104,19 +116,27 @@
   "distrdeliveries": [],
   "auth": [
     {
-      "name": "Андрей Волков",
-      "login": "andrei.volkov@relod.ru",
-      "password": "123456",
-      "role": "dispatcher",
-      "id": "589094fe-6dcf-4d43-85c4-3c16643fbdd3",
-      "admin": true
-    },
-    {
+      "id": "f36aae78-caa4-498c-9972-93fab8cf4311",
       "name": "Михаил Якунин",
       "login": "yauser@mail.ru",
       "password": "123456",
       "role": "manager",
-      "id": "10d691fd-8430-4145-a377-f9bb347ef989",
+      "admin": true
+    },
+    {
+      "id": "1cdd3d6e-cbc3-4b13-86f4-bc3502759752",
+      "name": "Михаил",
+      "login": "yakunin_ma@npp-qualitet.ru",
+      "password": "123456",
+      "role": "manager",
+      "admin": false
+    },
+    {
+      "id": "5dc94e2c-8581-4825-9900-9ce866630e31",
+      "name": "Якуб",
+      "login": "ya16-2@ya.ru",
+      "password": "123456",
+      "role": "dispatcher",
       "admin": false
     }
   ]

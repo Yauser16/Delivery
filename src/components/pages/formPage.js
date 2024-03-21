@@ -1,7 +1,6 @@
 
 import DeliveryForm from "../addForm/DeliveryForm";
 import DeliveryList from "../deliveryList/DeliveryList";
-import ModalMessageWarning from "../modalDeliveryPage/ModalMessageWarning";
 import SearchDeliveries from "../searchDeliveries/SearchDeliveries";
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
@@ -41,8 +40,7 @@ const FormPage = (props) => {
                             filteredDeliveries={filteredDeliveries}
                             isSuccess={isSuccess}
                             isLoading={isLoading}
-                            isError={isError}  />
-                        <ModalMessageWarning/>
+                            isError={isError}  />                        
                     </ul>
                 </div>
             </div>

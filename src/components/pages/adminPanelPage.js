@@ -103,7 +103,7 @@ const AdminPanelPage = () => {
             message: values.id,
             reply_to: values.login
         }
-        emailjs.send('service_q8c12ve', 'template_yk3kzup', mailDetails, 'rIqvNzHJpzq6R_U-h')
+        emailjs.send('service_q8c12ve', 'template_j3xquk6', mailDetails, 'rIqvNzHJpzq6R_U-h')
             .then((result) => {
                 console.log('SUCCESS!', result.text);
             }, (error) => {
