@@ -16,7 +16,7 @@ const DeliveryForm = (props) => {
     const { selectData, selectWeight } = useDeliveryServices();
 
 
-    console.log(selectWeight())
+    console.log('log');
 
     const postDelivery = (values) => {
         const newDelivery = {
@@ -26,6 +26,9 @@ const DeliveryForm = (props) => {
             contactName: values.contactName,
             phone: values.phone,
             date: values.dateOfDelivery,
+            goods: values.titleOfGoods,
+            weight: values.weight,
+            items: values.items,
             documents: values.documentNumbers,
             description: values.description,
             sender: authUsers.name,
@@ -43,6 +46,9 @@ const DeliveryForm = (props) => {
                 contactName: '',
                 phone: '',
                 dateOfDelivery: '',
+                titleOfGoods: '',
+                weight: '',
+                items: '',
                 documentNumbers: '',
                 description: ''
             }}
@@ -55,13 +61,18 @@ const DeliveryForm = (props) => {
                     .min(2, 'Минимум 2 символа')
                     .required('Обязательное поле!'),
                 contactName: Yup.string()
-                    .min(2, 'Минимум 2 символа')
+                    .min(5, 'Минимум 5 символов')
                     .required('Обязательное поле!'),
                 phone: Yup.string()
                     .matches(/^[7-8]\d{10}$/, 'номер не корректен')
                     .required('Обязательное поле!'),
                 dateOfDelivery: Yup.string()
                     .required('Обязательное поле!'),
+                titleOfGoods: Yup.string()
+                    .max(25,'Максимум 25 знаков')
+                    .required('Укажите груз!'),
+                weight: Yup.string()
+                    .required('Укажите вес!'),
                 documentNumbers: Yup.string()
                     .min(2, 'Минимум 2 символа'),
                 description: Yup.string()
@@ -132,7 +143,7 @@ const DeliveryForm = (props) => {
                             className="form-control"
                             type="text"
                             placeholder="введите номер телефона водителя" />
-                        <ErrorMessage className='error' name="phone" component='div' />
+                        <ErrorMessage className='error' name="phone" component='div' />                        
                     </div>
                     <div className="form-group">
                         <label htmlFor="dateOfDelivery">Дата операции</label>
@@ -146,9 +157,9 @@ const DeliveryForm = (props) => {
                         </Field>
                         <ErrorMessage className='error' name="dateOfDelivery" component='div' />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group row g-0">
                         <label htmlFor="goods">Сведения о грузе</label>
-                        <div className="input-group">
+                        <div className="col-md-6 px-0">
                             <Field
                                 name="titleOfGoods"
                                 id="titleOfGoods"
@@ -157,26 +168,41 @@ const DeliveryForm = (props) => {
                                 placeholder="Описание груза"
                                 aria-label="Описание грузща">
                             </Field>
-                            <span className="input-group-text"> - </span>
+                        </div>
+                        <div className="col-md-3 px-0">
                             <Field
-                            as="select"
+                                as="select"
                                 name="weight"
                                 id="weight"
                                 type="text"
                                 className="form-control">
-                                <option value="">Выберите вес</option>
+                                <option value="">Вес, тн</option>
+                                <option value=">1">менее 1</option>
                                 {selectWeight()}
+                                <option value="20>">более 20</option>
                             </Field>
                         </div>
+                        <div className="col-md-3 px-0">
+                            <Field
+                                name="items"
+                                id="items"
+                                type="text"
+                                className="form-control"
+                                placeholder="к-во мест"
+                                aria-label="Описание груза">
+                            </Field>
+                        </div>
+                        <ErrorMessage className='error' name="weight" component='div' />
+                        <ErrorMessage className='error' name="titleOfGoods" component='div' />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="documentNumbers">Документы</label>
+                        <label htmlFor="documentNumbers">Время операции</label>
                         <Field
                             name="documentNumbers"
                             id="documentNumbers"
                             className="form-control"
                             type="text"
-                            placeholder="номера документов (если необходимо)" />
+                            placeholder="укажите время операции (если известно)" />
                         <ErrorMessage className='error' name="documentNumbers" component='div' />
                     </div>
                     <div className="form-group">

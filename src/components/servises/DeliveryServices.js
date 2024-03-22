@@ -31,13 +31,17 @@ const useDeliveryServices = () => {
     }
 
     const selectWeight = () => {
+        const arr = [];
         let i = 0;
-        for ( let e = 0; e < 20; e++) {
-            i = i+1;
-        return i;}
+        for ( let e = 1; e <= 20; e++) {
+            i =+e;
+            arr.push(i);
+        }
         
-        return <option key={i} value={i}>{i}</option>
+        return arr.map(item => {
+            return <option key={item} value={item}>{item}</option>})
     }
+
     const checkDate = item => {
         let dateRegex = /(\d\d).(\d\d).(\d\d\d\d)/;
         let itemDateArr = dateRegex.exec(item);
@@ -74,5 +78,3 @@ const useDeliveryServices = () => {
 
 }
 export default useDeliveryServices;
-
-

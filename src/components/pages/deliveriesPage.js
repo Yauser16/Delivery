@@ -85,21 +85,22 @@ const DeliveriesPage = memo((props) => {
                 return <option key={item} value={item}>{item}</option>
             } return null;
         });
-        return dates; 
+        return dates;
     };
-    
+
 
 
     const deliveryRender = (arr) => {
         if (arr.length === 0) {
-            return <h5 className="text-center mt-5">На эту дату доставок нет</h5>
+            return <h5 className="text-center mt-5">На эту дату операций нет</h5>
         }
         return arr.map((item) => {
             return (
                 <li className="list-group-item d-flex justify-content-between align-items-start" key={item.id}>
                     <div className="ms-2 me-auto">
                         <div className="fw-bold">{item.date}</div>
-                        {item.name}  <span className="address" style={{ "fontStyle": "italic", "marginLeft": "10px" }}>адрес: {item.address}</span>
+                        {item.operation === 'inTo' ? 'Поступление' : 'Отгрузка'}<span className="address" style={{ "fontStyle": "italic", "marginLeft": "10px" }}>
+                        {item.goods}, {item.weight}тн{item.operation === 'out' ? `, ${item.name}` : null}{item.documents ? `, ${item.documents}` : null}</span>
                     </div>
                     <button type="button" className="btn btn-link" onClick={() => { setDeliveryItem(item); }}>Детали</button>
                     <DriverSelections distrItem={item} driversNames={driversNames} distribution={distribution} />
@@ -141,12 +142,12 @@ const DeliveriesPage = memo((props) => {
                                 </div>
                             </form>
                         </div>
-                        <div className="col-4">
+                        {/* <div className="col-4">
                             <form className="row row-cols-lg-auto g-3 align-items-center justify-content-end">
                                 <div className="col-12">
                                     <label className="visually-hidden" htmlFor="inlineFormInputGroupUsername">Добавить водителя</label>
                                     <div className="input-group">
-                                        <input type="text" className="form-control" /* value={newDriver} */ onChange={e => setNewDriver(e.target.value)} id="inlineFormInputGroupUsername" placeholder="Добавить водителя" />
+                                        <input type="text" className="form-control"  onChange={e => setNewDriver(e.target.value)} id="inlineFormInputGroupUsername" placeholder="Добавить водителя" />
                                     </div>
                                 </div>
                                 <div className="col-12">
@@ -161,11 +162,11 @@ const DeliveriesPage = memo((props) => {
                                     </ul>
                                 </div>
                             </form>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="form-wrapper mt-3">
                         <div style={{ "display": 'flex', "justifyContent": 'center' }}>
-                            <h4>СПИСОК ДОСТАВОК</h4>
+                            <h4>СПИСОК ОПЕРАЦИЙ</h4>
                         </div>
                         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                             {authUsers.admin ? <Link className="btn btn-outline-primary" style={{ "height": "40px", "width": "150px" }} role="button" to="/admin">Пользователи</Link> : null}
@@ -174,7 +175,7 @@ const DeliveriesPage = memo((props) => {
                                     Выгрузить в CSV
                                 </button>
                                 <ul className="dropdown-menu">
-                                    <li>{exportCSV(filteredDeliveries, 'Deliveries', 'Доставки на дату')}</li>
+                                    <li>{exportCSV(filteredDeliveries, 'Deliveries', 'Операции на дату')}</li>
                                     <li>{exportCSV(onFilteredDistr(distribution), 'Drivers', 'Выбор водитетей')}</li>
                                 </ul>
                             </div>

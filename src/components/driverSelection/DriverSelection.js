@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const DriverSelections = memo((props) => {
 
-    const [driver, setDriver] = useState('Водитель не выбран');
+    const [driver, setDriver] = useState('Не обработано');
     const { driversNames, distrItem, distribution } = props;
     const [createDistribution] = useCreateDistrMutation();
     const [deleteDistribution] = useDeleteDistrMutation();
@@ -21,15 +21,18 @@ const DriverSelections = memo((props) => {
     });
     const addNewDistribution = (arrDistr, e) => {
         const newDistr = {
+            place: arrDistr.place,
+            operation: arrDistr.operation,
             name: arrDistr.name,
             contactName: arrDistr.contactName,
             phone: arrDistr.phone,
-            address: arrDistr.address,
-            place: arrDistr.place,
-            date: arrDistr.date,
-            documents: arrDistr.documents,
+            date: arrDistr.dateOfDelivery,
+            goods: arrDistr.titleOfGoods,
+            weight: arrDistr.weight,
+            items: arrDistr.items,
+            documents: arrDistr.documentNumbers,
             description: arrDistr.description,
-            sender: arrDistr.sender,
+            sender: arrDistr.name,
             driver: e.target.value,
             check: arrDistr.id,
             id: uuidv4()
@@ -45,8 +48,8 @@ const DriverSelections = memo((props) => {
 
         if (driver.id) {
             deleteDistribution(driver.id);
-            setDriver('Водитель отменён'); 
-            setTimeout(() => setDriver('Водитель отменён'), 2000);
+            setDriver('Отмена'); 
+            setTimeout(() => setDriver('Отмена'), 2000);
         } 
     };
     const stateItem = () => {
@@ -66,10 +69,10 @@ const DriverSelections = memo((props) => {
         <>
             <div className="dropdown">
                 <button className="btn btn-Light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Выбор водителя
+                    Статус
                 </button>
                 <ul className="dropdown-menu">
-                    <li><button className="dropdown-item" onClick={() => cancelDriver()}>Водитель отменён</button></li>
+                    <li><button className="dropdown-item" onClick={() => cancelDriver()}>Отмена</button></li>
                     {driversList(distrItem)}
                 </ul>
             </div>
