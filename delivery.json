@@ -1,0 +1,238 @@
+{
+  "delivery": [
+    {
+      "id": "67122120-bdc9-402a-9e92-d5395ad2339a",
+      "place": "tambov",
+      "operation": "inTo",
+      "name": "Зао \"Релод\"",
+      "contactName": "m123mm77",
+      "phone": "79166735135",
+      "date": "24.03.2024",
+      "goods": "Фосфор",
+      "weight": "17",
+      "items": "13",
+      "documents": "",
+      "description": "",
+      "sender": "Михаил Якунин"
+    },
+    {
+      "place": "lubertsy",
+      "operation": "inTo",
+      "name": "ЗАО \"РЕЛОД\"",
+      "contactName": "Т123ИИ77",
+      "phone": "89165554455",
+      "date": "30.03.2024",
+      "goods": "ТАФ-7Ж",
+      "weight": "14",
+      "items": "12",
+      "documents": "16:00 - 17:00",
+      "description": "В металлических бочках на паллетах",
+      "sender": "Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил, изменил: Михаил",
+      "id": "9a9d82fb-b6d4-4414-9153-1df76ecd55dc"
+    },
+    {
+      "place": "lubertsy",
+      "operation": "out",
+      "name": "ООО \"Заря\"",
+      "contactName": "М147ТМ177",
+      "phone": "89454567889",
+      "date": "25.03.2024",
+      "goods": "Масло",
+      "weight": "20>",
+      "items": "22",
+      "documents": "12,00",
+      "description": "",
+      "sender": "Михаил",
+      "id": "7c61ac39-e967-4689-9525-27da5cb0e8bf"
+    },
+    {
+      "place": "lubertsy",
+      "operation": "inTo",
+      "name": "Wuhan",
+      "contactName": "М123МР177",
+      "phone": "89455699898",
+      "date": "24.03.2024",
+      "goods": "Пятисернистый фосфор",
+      "weight": "13",
+      "items": "",
+      "documents": "после 13.00",
+      "description": "",
+      "sender": "Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил, изменил: Михаил, изменил: Михаил, изменил: Михаил, изменил: Михаил, изменил: Михаил",
+      "id": "16189d1c-af39-43fb-abdb-b10a1aea31a8"
+    },
+    {
+      "place": "tambov",
+      "operation": "out",
+      "name": "ООО \"НПЗ\"",
+      "contactName": "Т456ОО177",
+      "phone": "89166755889",
+      "date": "24.03.2024",
+      "goods": "масло 10w40",
+      "weight": "17",
+      "items": "12",
+      "documents": "",
+      "description": "",
+      "sender": "Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил",
+      "id": "e513d9bf-562a-4ab1-8297-da1ff5d069bf"
+    },
+    {
+      "place": "tambov",
+      "operation": "inTo",
+      "name": "Зао \"Релод\"",
+      "contactName": "ggggggg",
+      "phone": "89998889999",
+      "date": "24.03.2024",
+      "goods": "масло 10w40",
+      "weight": "19",
+      "items": "23",
+      "documents": "после обеда",
+      "description": "",
+      "sender": "Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил Якунин, изменил: Михаил",
+      "id": "52f864d7-554b-4d3b-acff-1b8fb97ca2fb"
+    }
+  ],
+  "deliveriesprops": [
+    {
+      "id": "1",
+      "name": "place",
+      "label": "Площадка"
+    },
+    {
+      "id": "2",
+      "name": "operation",
+      "label": "Операция"
+    },
+    {
+      "id": "3",
+      "name": "contactName",
+      "label": "Номер машины"
+    },
+    {
+      "id": "4",
+      "name": "phone",
+      "label": "Телефон водителя"
+    },
+    {
+      "id": "6",
+      "name": "date",
+      "label": "Дата операции"
+    },
+    {
+      "id": "7",
+      "name": "goods",
+      "label": "Груз"
+    },
+    {
+      "id": "8",
+      "name": "description",
+      "label": "Детали"
+    },
+    {
+      "id": "9",
+      "name": "sender",
+      "label": "Оформил"
+    }
+  ],
+  "drivers": [
+    {
+      "name": "завершено",
+      "id": "fa68345d-844b-4729-b4fb-46ea031e0d5c"
+    },
+    {
+      "name": "отменено",
+      "id": "567b32e5-71b2-4683-b3e0-ef2163a4ac8a"
+    }
+  ],
+  "distrdeliveries": [
+    {
+      "place": "tambov",
+      "operation": "inTo",
+      "name": "Зао \"Релод\"",
+      "contactName": "m123mm77",
+      "phone": "79166735135",
+      "weight": "17",
+      "items": "13",
+      "description": "",
+      "sender": "Зао \"Релод\"",
+      "driver": "завершено",
+      "check": "67122120-bdc9-402a-9e92-d5395ad2339a",
+      "id": "fe35f3b1-b5b3-4f5a-90dd-08dfe50c7eba"
+    },
+    {
+      "place": "lubertsy",
+      "operation": "out",
+      "name": "ООО \"Заря\"",
+      "contactName": "М147ТМ177",
+      "phone": "89454567889",
+      "weight": "20>",
+      "items": "22",
+      "description": "",
+      "sender": "ООО \"Заря\"",
+      "driver": "завершено",
+      "check": "7c61ac39-e967-4689-9525-27da5cb0e8bf",
+      "id": "e7bd9bb3-2633-41b2-9e6d-3b1957976bc0"
+    }
+  ],
+  "auth": [
+    {
+      "name": "Михаил",
+      "login": "yakunin_ma@npp-qualitet.ru",
+      "password": "123456",
+      "role": "manager",
+      "id": "3b3892c6-1c2f-44a0-94d7-f1d42d967422",
+      "admin": true
+    },
+    {
+      "name": "Миша",
+      "login": "ya16-2@ya.ru",
+      "password": "123456",
+      "role": "dl",
+      "id": "249f7df5-6595-4d99-aaa5-ea8ef218900e",
+      "admin": false
+    },
+    {
+      "name": "Yauser",
+      "login": "yauser@mail.ru",
+      "password": "123456",
+      "role": "dispatcher",
+      "id": "a8c7f1e7-d98d-42c5-8d8f-03c87bb08f4a",
+      "admin": false
+    },
+    {
+      "name": "tambovlogist",
+      "login": "tambov@mail.ru",
+      "password": "123456",
+      "role": "dt",
+      "place": "tambov",
+      "id": "1e0cd48e-0ade-40ec-a18f-ccf6149d4b2a",
+      "admin": false
+    },
+    {
+      "name": "tambovControl",
+      "login": "tambovControl@mail.ru",
+      "password": "123456",
+      "role": "ct",
+      "place": "tambov",
+      "id": "05e6fa37-4c86-4f67-b338-1caf64669f6f",
+      "admin": false
+    },
+    {
+      "name": "lubertsyLogist",
+      "login": "lubertsyDisp@mail.ru",
+      "password": "123456",
+      "role": "dl",
+      "place": "lubertsy",
+      "id": "e9d89db0-b3d3-436d-a803-7d6c65fc3028",
+      "admin": false
+    },
+    {
+      "name": "lubertsyControl",
+      "login": "lubertsyControl@mail.ru",
+      "password": "123456",
+      "role": "cl",
+      "place": "lubertsy",
+      "id": "b0964cdf-a3ef-4ffc-afbd-6cd6c95ad59a",
+      "admin": false
+    }
+  ]
+}

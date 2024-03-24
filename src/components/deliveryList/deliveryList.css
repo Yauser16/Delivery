@@ -1,0 +1,19 @@
+/* .largeScreen {
+    display: block;
+} */
+
+@media screen and (max-width: 440px) {
+    .bigScreen {
+        display: none;
+    }
+}
+
+.littleScreen {
+    display: none;
+}
+
+@media screen and (max-width: 440px) {
+    .littleScreen {
+        display: block;
+    }
+}
