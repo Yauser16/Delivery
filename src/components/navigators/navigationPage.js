@@ -23,10 +23,10 @@ export const NavigationAdminPanel = (props) => {
 };
 
 const AdminPanelElement = (props) => {
-    const { authUsers } = props;
+    const { authUsers, driversNames } = props;
     return (
         <NavigationAdminPanel authUsers={authUsers}>
-            <AdminPanelPage />
+            <AdminPanelPage driversNames={driversNames}/>
         </NavigationAdminPanel>
     )
 }

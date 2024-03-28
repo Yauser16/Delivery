@@ -1,6 +1,8 @@
 
 
+import React, { useState } from 'react';
 import { useGetAuthQuery, useCreateAuthMutation, useDeleteAuthMutation } from '../../api/authApiSlice';
+import { useCreateDriverMutation, useDeleteDriverMutation } from '../../api/apiSlice';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -8,16 +10,20 @@ import { v4 as uuidv4 } from 'uuid';
 import emailjs from '@emailjs/browser';
 import "./adminPanel.css";
 
-const AdminPanelPage = () => {
+const AdminPanelPage = props => {
 
+    const { driversNames } = props;
     const navigate = useNavigate();
-    
+    const [newDriver, setNewDriver] = useState('');
+    const [createDriver] = useCreateDriverMutation();
+    const [deleteDriver] = useDeleteDriverMutation();
+
     const { data: auth = [],
         isLoading,
         isError,
         isFetching,
         refetch } = useGetAuthQuery();
-    
+
     const [deleteAuth] = useDeleteAuthMutation();
 
     const onDelete = (id) => {
@@ -41,6 +47,19 @@ const AdminPanelPage = () => {
             }
         }
     }
+    const addNewDriver = (driver) => {
+        const newDriver = {
+            name: driver,
+            id: uuidv4()
+        }
+        if (newDriver.name !== '')
+            createDriver(newDriver).unwrap();            
+    }
+
+    const driversListForDelete = () => driversNames.map(i => {
+        return <li key={i.id}><button className="dropdown-item" value={i.name} onClick={(e) => { deleteDriver(i.id); e.preventDefault() }} >{i.name}</button></li>
+    });
+
     const status = (id) => {
         return auth.map(item => {
             if (item.id === id && item.password !== '') {
@@ -57,7 +76,8 @@ const AdminPanelPage = () => {
 
     }
     const colorStatus = item => item.password !== "" ? "badge text-bg-success" : "badge text-bg-warning";
-    const colorRole = item => item.role === "manager" ? "badge text-bg-info" : "badge text-bg-primary";
+    const colorRole = item => item.role === "manager" ? "badge text-bg-info" : item.role === "dl" ? "badge text-bg-primary" : item.role === "dt" ? "badge text-bg-secondary" : 
+    item.role === "cl" ? "badge text-bg-dark" : item.role === "ct" ? "badge text-bg-danger" : "none";
 
     const deliveryRender = (arr) => {
         if (arr.length === 0) {
@@ -70,20 +90,23 @@ const AdminPanelPage = () => {
                         <div className="fw-bold">{item.name}</div>
                         <div className="fw">{item.login}  </div>
                         <div className="smallScreen">
-                        роль: <span style={{"marginRight": "5px"}} className={colorRole(item)}>{item.role}</span>
-                        статус: <span style={{"marginRight": "5px"}} className={colorStatus(item)}>{status(item.id)}</span>
+                            роль: <span style={{ "marginRight": "5px" }} className={colorRole(item)}>{item.role}</span>
+                            статус: <span style={{ "marginRight": "5px" }} className={colorStatus(item)}>{status(item.id)}</span>
                         </div>
                         <button type="button" id={item.id} disabled={item.admin} className="btn btn-danger small" onClick={e => onDelete(item.id)}>удалить</button>
                     </div>
-                        <div className="largeScreen">
-                        роль: <span style={{"marginRight": "5px"}} className={colorRole(item)}>{item.role}</span>
-                        статус: <span style={{"marginRight": "5px"}} className={colorStatus(item)}>{status(item.id)}</span>
-                        </div>
+                    <div className="largeScreen">
+                        роль: <span style={{ "marginRight": "5px" }} className={colorRole(item)}>{item.role}</span>
+                        статус: <span style={{ "marginRight": "5px" }} className={colorStatus(item)}>{status(item.id)}</span>
+                    </div>
                     <button type="button" id={item.id} disabled={item.admin} className="btn btn-danger large" onClick={e => onDelete(item.id)}>удалить</button>
                 </li>
             )
         });
     }
+
+    const placeRole = role => {return role === "manager" ? "all" : role === "dispatcher" ? "all" : role === "dl" ? "lubertsy" : role === "dt" ? "tambov" :
+    role === "cl" ? "lubertsy" : role === "ct" ? "tambov" : null}
 
     const newUser = (value, checkAdmin) => {
         const user = {
@@ -91,6 +114,7 @@ const AdminPanelPage = () => {
             login: value.login,
             password: value.password,
             role: value.role,
+            place: placeRole(value.role),
             id: uuidv4(),
             admin: checkAdmin
         }
@@ -98,7 +122,7 @@ const AdminPanelPage = () => {
     }
     const sendMail = values => {
         const mailDetails = {
-            from_name: 'Доставка корпоративным клиентам',
+            from_name: 'Грузоперевозки',
             to_name: values.name,
             message: values.id,
             reply_to: values.login
@@ -144,16 +168,35 @@ const AdminPanelPage = () => {
 
     return (
         <>
-       
+
             <div className="p-5 flex-fill" style={{ "maxWidth": "1000px", "margin": "auto" }}>
-                <div className="row justify-content-end" style={{"marginBottom": "10px"}}>
-                <button onClick={() => navigate(-1)} type="button" style={{ 'width': "230px", "margin": "10px 10px 0 0" }} className="btn btn-outline-primary">Назад, в список доставок</button>
+                <div className="row justify-content-end" style={{ "marginBottom": "10px" }}>
+                    <button onClick={() => navigate(-1)} type="button" style={{ 'width': "230px", "margin": "10px 10px 0 0" }} className="btn btn-outline-primary">Назад, в список доставок</button>
                 </div>
-            
+                <div className="col-8">
+                    <form className="row row-cols-lg-auto g-2 mb-4 align-items-center justify-content-start">
+                        <div className="col-12">
+                            <div className="input-group">
+                                <input type="text" className="form-control" onChange={e => setNewDriver(e.target.value)} onBlur={e => e.target.value = ''} id="inlineFormInputGroupUsername" placeholder="Добавить статус" />
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <button onClick={(e) => { addNewDriver(newDriver); e.preventDefault() }} className="btn btn-success" type="reset">Добавить</button>
+                        </div>
+                        <div className="dropdown">
+                            <button className="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Удалить статус
+                            </button>
+                            <ul className="dropdown-menu">
+                                {driversListForDelete()}
+                            </ul>
+                        </div>
+                    </form>
+                </div>
                 <div className="form-wrapper">
                     <div className="row justify-content-between">
                         <div className="col">
-                            <h5>Пользователи</h5>
+                            <h5>ПОЛЬЗОВАТЕЛИ</h5>
                         </div>
                         <div className="col" >
                             <button type="button" style={{ "float": "right" }} className="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -186,6 +229,7 @@ const AdminPanelPage = () => {
                     login: '',
                     role: '',
                     password: ''
+                   
                 }}
                 validationSchema={Yup.object({
                     name: Yup.string()
@@ -236,11 +280,14 @@ const AdminPanelPage = () => {
                                             name="role"
                                             as="select"
                                             id="role"
-                                            className="form-control"
-                                        >
+                                            className="form-control">
                                             <option value="">выберите роль</option>
-                                            <option value="manager">manager</option>
-                                            <option value="dispatcher">dispatcher</option>
+                                            <option value="manager">управление</option>
+                                            <option value="dispatcher">просмотр</option>                                           
+                                            <option value="dl">просмотр Люберцы</option>
+                                            <option value="dt">просмотр Тамбов</option>
+                                            <option value="cl">охрана Люберцы</option>
+                                            <option value="ct">охрана Тамбов</option>
                                         </Field>
                                         <ErrorMessage className='error' name="role" component='div' style={{ "color": "red" }} />
                                     </div>

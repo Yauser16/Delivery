@@ -36,6 +36,7 @@ const CreatePasswordNewUserPage = () => {
             login: newUser.login,
             password: value.password,
             role: newUser.role,
+            place: newUser.place,
             id: uuidv4(),
             admin: newUser.admin
         }

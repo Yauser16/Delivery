@@ -7,7 +7,7 @@ import useDeliveryServices from '../servises/DeliveryServices';
 import "./deliveriesPage.css";
 
 
-const DeliveriesPage = memo((props) => {
+const DeliveriesPageDisp = memo((props) => {
     const { distribution, driversNames, deliveryItems, refetch, isLoading, isError, authUsers } = props;
     const [filteredDeliveries, setFilteredDeliveries] = useState(deliveryItems);
     const [deliveryItem, setDeliveryItem] = useState(null);
@@ -16,23 +16,24 @@ const DeliveriesPage = memo((props) => {
 
     const onFilteredItems = (data) => {
         if (selectedDate !== "all") {
-            let result = data.filter(item => item.date === selectedDate);
+            let result = data.filter(item => item.date === selectedDate && item.place === authUsers.place);
             setFilteredDeliveries(result);
         }
         if (selectedDate === "all") {
-            setFilteredDeliveries(data);
+            let resultPlace = data.filter(item => item.place === authUsers.place);
+            setFilteredDeliveries(resultPlace);
         }
     }
 
     const onFilteredDistr = (data) => {
         if (selectedDate !== "all") {
-            return data.filter(item => item.date === selectedDate);
+            return data.filter(item => item.date === selectedDate && item.place === authUsers.place);
         }
         if (selectedDate === "all") {
-            return data;
+            return data.filter(item => item.place === authUsers.place);
         }
     }
-
+    console.log(authUsers);
     const onRefetch = () => setInterval(() => { refetch(); }, 3000);
 
     useEffect(() => {
@@ -44,7 +45,7 @@ const DeliveriesPage = memo((props) => {
         // eslint-disable-next-line
         []);
     useEffect(() => {
-        onFilteredItems(deliveryItems);
+        onFilteredItems(deliveryItems);        
     },
         // eslint-disable-next-line
         [deliveryItems]);
@@ -102,7 +103,8 @@ const DeliveriesPage = memo((props) => {
         });
     }
 
-    const elements = deliveryRender(filteredDeliveries.filter(item => checkDate(item.date)));
+    const elements = deliveryRender(filteredDeliveries.filter(item => checkDate(item.date) && item.place === authUsers.place));
+    
 
     return (
         <>
@@ -150,4 +152,4 @@ const DeliveriesPage = memo((props) => {
         </>
     )
 })
-export default DeliveriesPage;
+export default DeliveriesPageDisp;

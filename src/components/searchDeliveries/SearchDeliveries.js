@@ -1,4 +1,5 @@
 
+import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import { useGetPropsQuery } from '../../api/apiSlice';
 import "./searchDeliveries.css";
@@ -9,6 +10,7 @@ const SearchDeliveries = (props) => {
         data: deliveriesProps = [],
 
     } = useGetPropsQuery();
+    const [state, setState] = useState(null);
 
     const optionsForm = (data) => {
 
@@ -18,6 +20,29 @@ const SearchDeliveries = (props) => {
             )
         })
     }
+    const optionsValue = (data) => {
+if (data) {
+    return data.map(item => {
+        return (
+            <option key={item} value={item}>{item}</option>
+        )
+    })
+}
+   return null;     
+    }
+    
+    const searchOptions = (data) => {        
+        const arrOpt = [];
+        deliveryItems.forEach((item) => {
+           arrOpt.push(item[data]);
+        });
+        function dateList(item, index, arr) {
+            return arr.indexOf(item) === index;
+        }
+        const filteredDate = arrOpt.filter(dateList);
+        setState(filteredDate);
+    };
+ /*    console.log(state); */
     return (
         <Formik
             initialValues={{
@@ -37,20 +62,24 @@ const SearchDeliveries = (props) => {
                         as="select"
                         className="form-select"
                         name="options"
-                        id="options">
+                        id="options"
+                        onFocus={() => setState(null)}
+                        onBlur={e => searchOptions(e.target.value)}>                            
                         <option value="">Выберите...</option>
-                        {optionsForm(deliveriesProps)}
+                        {optionsForm(deliveriesProps)}                       
                     </Field >
                 </div>
                 <div className="col-sm-7">
                     <label className="visually-hidden" htmlFor="query">Введите запрос</label>
                     <div className="input-group">
-                        <Field
-                            type="text"
-                            className="form-control"
-                            name="query"
-                            id="query"
-                            placeholder="Введите запрос" />
+                    <Field
+                        as="select"
+                        className="form-select"
+                        name="query"
+                        id="query">
+                        <option value="">Выберите...</option>
+                       {optionsValue(state)}
+                    </Field >                      
                     </div>
                 </div>
                 <div className="col-sm">

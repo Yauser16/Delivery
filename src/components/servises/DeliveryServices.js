@@ -3,7 +3,7 @@ import { CSVLink } from "react-csv";
 
 const useDeliveryServices = () => {
 
-       const today = () => {
+    const today = () => {
         let date = new Date();
         let year = date.getFullYear();
         let month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
@@ -15,9 +15,9 @@ const useDeliveryServices = () => {
         const arrDates = [];
         let todays = new Date();
         let date = new Date(todays.getFullYear(), todays.getMonth(), todays.getDate());
-        for (let i = 0; i < 20;  i ++ ) { 
+        for (let i = 0; i < 20; i++) {
             let d = i === 0 ? 0 : 1;
-           date.setDate(date.getDate() + d);
+            date.setDate(date.getDate() + d);
             let year = date.getFullYear();
             let month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
             let day = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`;
@@ -33,13 +33,14 @@ const useDeliveryServices = () => {
     const selectWeight = () => {
         const arr = [];
         let i = 0;
-        for ( let e = 1; e <= 20; e++) {
-            i =+e;
+        for (let e = 1; e <= 20; e++) {
+            i = +e;
             arr.push(i);
         }
-        
+
         return arr.map(item => {
-            return <option key={item} value={item}>{item}</option>})
+            return <option key={item} value={item}>{item}</option>
+        })
     }
 
     const checkDate = item => {
@@ -55,15 +56,19 @@ const useDeliveryServices = () => {
 
     const exportCSV = (csvData, fileName, title) => {
         const headers = [
-            { label: "Клиент", key: "name" },
-            { label: "Контактное лицо", key: "contactName" },
-            { label: "Телефон контактного лица", key: "phone" },
-            { label: "Адрес доставки", key: "address" },
+            { label: "Площадка", key: "place" },
+            { label: "Операция", key: "operation" },
+            { label: "Контрагент", key: "name" },
+            { label: "Номер машины", key: "contactName" },
+            { label: "Телефон водителя", key: "phone" },
             { label: "Дата доставки", key: "date" },
-            { label: "Документы", key: "documents" },
+            { label: "Груз", key: "goods" },
+            { label: "Вес", key: "weight" },
+            { label: "Количество мест", key: "items" },
+            { label: "Время операции", key: "documents" },
             { label: "Детали", key: "description" },
-            { label: "Отправитель", key: "sender" },
-            { label: "Водитель", key: "driver" }
+            { label: "Заявитель", key: "sender" },
+            { label: "Статус", key: "driver" }
         ];
         return <CSVLink className="dropdown-item" role="button" data={csvData} headers={headers} separator={"\t"} filename={fileName}>{title}</CSVLink>
     };

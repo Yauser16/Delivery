@@ -1,7 +1,6 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 import { apiSlice } from '../api/apiSlice';
-import { geoSlice } from '../api/geoApiSlice';
 import { authSlice } from '../api/authApiSlice';
 
 
@@ -16,11 +15,10 @@ const stringMiddleware = () => next => action => {
 
 const store = configureStore({
     reducer: {
-        [apiSlice.reducerPath]: apiSlice.reducer,
-        [geoSlice.reducerPath]: geoSlice.reducer,
+        [apiSlice.reducerPath]: apiSlice.reducer,       
         [authSlice.reducerPath]: authSlice.reducer
     },
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(stringMiddleware, apiSlice.middleware, geoSlice.middleware, authSlice.middleware),
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(stringMiddleware, apiSlice.middleware,  authSlice.middleware),
     devTools: process.env.NODE_ENV !== 'production'
 });
 

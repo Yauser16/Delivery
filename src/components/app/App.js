@@ -15,6 +15,7 @@ function App() {
     name: '',
     login: '',
     role: '',
+    place: '',
     admin: false
   });
 
@@ -70,7 +71,8 @@ function App() {
           />}/>
           <Route path="*" element={<Page404 />} />
           <Route path="/admin" element={<AdminPanelElement
-            authUsers={authUsers} />} />
+            authUsers={authUsers}
+            driversNames={driversNames} />} />
           <Route path="/auth/:id" element={<PasswordNewUserPage />} />
         </Routes>
       </Suspense>

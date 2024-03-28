@@ -23,6 +23,7 @@ const EnterPage = (props) => {
         name: user.name,
         login: user.login,
         role: user.role,
+        place: user.place,
         admin: user.admin
 
       });

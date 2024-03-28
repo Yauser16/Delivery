@@ -70,7 +70,7 @@ const DeliveryForm = (props) => {
                     .required('Обязательное поле!'),
                 titleOfGoods: Yup.string()
                     .max(25,'Максимум 25 знаков')
-                    .required('Укажите груз!'),
+                    .required('Опишите груз!'),
                 weight: Yup.string()
                     .required('Укажите вес!'),
                 documentNumbers: Yup.string()

@@ -1,5 +1,5 @@
 
-import React, { useState,  memo } from "react";
+import React, { useState, memo } from "react";
 import { useCreateDistrMutation, useDeleteDistrMutation } from "../../api/apiSlice";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -43,15 +43,15 @@ const DriverSelections = memo((props) => {
         createDistribution(newDistr).unwrap();
         setDriver(newDistr);
     };
-    
-    const cancelDriver = () => {
+
+    /* const cancelDriver = () => {
 
         if (driver.id) {
             deleteDistribution(driver.id);
-            setDriver('Отмена'); 
+            setDriver('Отмена');
             setTimeout(() => setDriver('Отмена'), 2000);
-        } 
-    };
+        }
+    }; */
     const stateItem = () => {
         if (distribution) {
             distribution.forEach(objItem => {
@@ -72,7 +72,7 @@ const DriverSelections = memo((props) => {
                     Статус
                 </button>
                 <ul className="dropdown-menu">
-                    <li><button className="dropdown-item" onClick={() => cancelDriver()}>Отмена</button></li>
+                    {/*  <li><button className="dropdown-item" onClick={() => cancelDriver()}>Отмена</button></li> */}
                     {driversList(distrItem)}
                 </ul>
             </div>
